@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <title>Pharmacy Pro | Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
+    <form id="form1" runat="server">
+        <nav class="bg-emerald-700 text-white p-4 shadow-lg border-b-4 border-emerald-900 sticky top-0 z-50">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-2xl font-black italic tracking-tighter">💊 PharmacyPro</h1>
+                
+                <div class="space-x-4 flex items-center">
+                    <asp:HyperLink ID="lnkHome" runat="server" NavigateUrl="~/CustomerHome.aspx" CssClass="hover:text-emerald-200 font-bold transition">Home</asp:HyperLink>
+                    
+                    <asp:PlaceHolder ID="phAdminMenu" runat="server" Visible="false">
+                        <asp:LinkButton ID="btnNavStats" runat="server" OnClick="BtnNavStats_Click"
+                            CssClass="bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest border border-emerald-400 transition">
+                            📊 Stats
+                        </asp:LinkButton>
+
+                        <asp:LinkButton ID="btnNavGenReport" runat="server" OnClick="BtnNavGenReport_Click"
+                            CssClass="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest border border-white/20 transition">
+                            📄 Generate Report
+                        </asp:LinkButton>
+
+                        <asp:LinkButton ID="btnNavOrders" runat="server" OnClick="BtnNavOrders_Click"
+                            CssClass="bg-amber-500 text-gray-900 px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-amber-400 transition">
+                            🛒 All Orders
+                        </asp:LinkButton>
+                    </asp:PlaceHolder>
+
+                    <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click" 
+                        CssClass="bg-red-500 hover:bg-red-600 px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest transition shadow-md">
+                        Logout
+                    </asp:LinkButton>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mx-auto mt-10 p-4 flex-grow">
+            <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+
+        <footer class="bg-white border-t p-6 text-center text-gray-400 text-xs mt-10 uppercase tracking-widest font-bold">
+            &copy; 2026 Pharmacy Project. Built with ASP.NET & Tailwind.
+        </footer>
+    </form>
+</body>
+</html>
